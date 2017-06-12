@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   def self.search(term)
-    return self if term.blank?
+    return all if term.blank?
 
     where("lower(name) LIKE ?", "%#{term.downcase}%")
   end
