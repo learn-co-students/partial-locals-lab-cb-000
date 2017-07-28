@@ -1,0 +1,14 @@
+<h2>Search</h2>
+
+<%= form_tag students_path, :method => "get", id: "search-form" do %>
+<%= label_tag :name_has %>
+<%= text_field_tag :search, params[:name] %>
+
+<%= submit_tag "Search", :name => nil %>
+<%end%>
+
+<h2>Search Results</h2>
+<% @students.each do |student| %>
+<%= render partial: "student", locals: {student: student}%>
+<!--this is what i had wrong. I was using a collection helper instead of doing it manually-->
+<%end%>
