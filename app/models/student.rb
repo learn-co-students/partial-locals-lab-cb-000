@@ -13,4 +13,19 @@
 class Student < ActiveRecord::Base
   has_many :classroom_students
   has_many :classrooms, through: :classroom_students
+
+  def self.search(t)
+    arr = []
+    if t == ''
+      return Student.all
+    else
+      Student.all.each do |student|
+        if student.name.downcase.start_with? t
+          arr << student
+        end
+      end
+    end
+    arr
+  end
+
 end
