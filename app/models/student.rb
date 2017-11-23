@@ -15,6 +15,13 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   def self.search(str)
-    Student.find(:all, name: str)
+    if str != ""
+      # Student.find(:all, :conditions => ['keywords LIKE ?', '%rob%'])
+      Student.where("name like ?", "%#{str}%")
+
+      # Student.find_by(name: str)
+    else
+      Student.all
+    end
   end
 end
