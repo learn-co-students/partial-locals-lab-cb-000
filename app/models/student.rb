@@ -15,7 +15,7 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :classroom_students
 
   def self.search(query)
-    return Student.all if query.empty?
+    return Student.all if !query || query.empty?
     Student.all.select do |student|
       student if student.name.downcase.match query
     end
