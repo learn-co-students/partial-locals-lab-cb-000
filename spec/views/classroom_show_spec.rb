@@ -17,6 +17,7 @@ RSpec.describe "classroom_show_view" do
     view.lookup_context.prefixes = %w[students, classrooms]
     student = Student.create(name: 'Bobby', hometown: Faker::Address.city, birthday: Faker::Date.between(25.years.ago, 18.years.ago))
     assign(:classroom, classroom)
+    # binding.pry
     render :template => "classrooms/show.html.erb"
     expect(rendered).to match /Math/
   end
