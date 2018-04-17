@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails',      ">= 2.0.0.beta"
   gem 'annotate'
   gem 'pry-byebug'
+  gem 'pry'
   gem 'faker'
 end
 
