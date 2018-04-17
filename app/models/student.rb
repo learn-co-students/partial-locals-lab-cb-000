@@ -13,4 +13,15 @@
 class Student < ActiveRecord::Base
   has_many :classroom_students
   has_many :classrooms, through: :classroom_students
+
+  def self.search(term)
+
+    if term.empty?
+      Student.all
+    else
+      Student.where('name LIKE ?', "%" + term + "%").all
+
+    end
+
+  end
 end
