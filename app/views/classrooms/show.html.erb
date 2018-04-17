@@ -3,4 +3,8 @@
 
 We now want to call out the oldest student in the class:
 
-<%= render partial: 'students/student', locals: {student: @student} %>
+<!-- if the test is failing when it shouldnt, build the final desired outcome ??
+frustrating -->
+<% @classroom.students.each do |student| %>
+<%= render partial: 'students/student', locals: {student: student} %>
+<%end %>
