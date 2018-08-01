@@ -1,10 +1,16 @@
 <%= content_tag :h1, "Students" %>
 
-<%= content_tag :h3, "Search for a Student:" %>
+<%= content_tag :h3, "Search Students" %>
 
-<%= form_tag path_name, method: :post do %>
-  <%= label_tag :'search_student_name', "Student Name:" %>
-  <%= text_field_tag :'search[student_name]' %>
+<%= form_tag students_path, method: :get do %>
+  <%= label_tag :'student_name', "Student Name:" %>
+  <%= text_field_tag :'student_name' %>
 
-  <%= submit_tag "Create Student" %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
+
+<% if @students %>
+  <% @students.each do |student| %>
+    <%= render partial: "student", locals: {student: student} %>
+  <% end %>
 <% end %>
