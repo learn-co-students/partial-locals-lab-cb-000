@@ -1,0 +1,5 @@
+<%= content_tag :h1, "Classrooms" %>
+
+<%= @classrooms.each do |classroom| %>
+  <%= render partial: "classroom", locals: {classroom: classroom} %>
+<% end %>

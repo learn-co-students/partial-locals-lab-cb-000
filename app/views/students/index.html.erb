@@ -1,0 +1,10 @@
+<%= content_tag :h1, "Students" %>
+
+<%= content_tag :h3, "Search for a Student:" %>
+
+<%= form_tag path_name, method: :post do %>
+  <%= label_tag :'search_student_name', "Student Name:" %>
+  <%= text_field_tag :'search[student_name]' %>
+
+  <%= submit_tag "Create Student" %>
+<% end %>
