@@ -14,16 +14,15 @@ class Student < ActiveRecord::Base
   has_many :classroom_students
   has_many :classrooms, through: :classroom_students
 
-  def name_equals(name)
-    name.downcase == self.name.downcase
+  def name_in(name)
+    self.name.downcase.include?(name.downcase)
   end
 
   def self.search(name)
-    binding.pry
     if !name.present?
       self.all
     else
-      self.all.select { |s| s.name_equals(name) }
+      self.all.select { |s| s.name_in(name) }
     end
   end
 
