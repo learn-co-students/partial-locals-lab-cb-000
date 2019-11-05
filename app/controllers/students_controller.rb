@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   def new
-    @student = Student.new
+    @student = Student.new 
   end
 
   def create
@@ -21,7 +21,8 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all
+    @students = Student.search(params[:query])
+    render 'index'
   end
 
   def student_params
