@@ -1,5 +1,11 @@
 Classroom Info
-<p>
-<%= @classroom.course_name %>
-<%= @classroom.semester %>
-</p>
+<%= render partial: 'classroom', locals: {classroom: @classroom} %>
+<% @classroom.students.each do |student| %>
+  <%= render partial: 'students/student', locals: {student: student} %>
+<% end %>
+
+<!--
+The way the Rspec test is written, it ignores the perfectly valid @students = @classroom.students assignment in the controller, necessitating repetition of that assignment in the view. 
+
+@students.each do… works perfectly in-browser, but Rspec thinks the value of @students is nil. Maybe because it is using a render call instead of actually visiting the path, which would go through the controller, and thus set @students for use by the view… ? 
+-->
